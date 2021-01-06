@@ -6,12 +6,12 @@
 
  **/[GET] endpoint for all users in the database /**
 ```
-/api/users
+/users/users
 ```
 
 **/[POST] - Register endpoint for a new user in the database/**
 ```
-/api/users/user
+/users/user
 ```
 **REQUIRED KEY/VALUES
 ```
