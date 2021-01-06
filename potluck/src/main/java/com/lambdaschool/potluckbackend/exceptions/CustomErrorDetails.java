@@ -1,5 +1,5 @@
 package com.lambdaschool.potluckbackend.exceptions;
 
-public class CustomerErrorDetails
+public class CustomErrorDetails
 {
 }

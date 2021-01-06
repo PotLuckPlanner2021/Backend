@@ -18,7 +18,7 @@ import static javax.persistence.TemporalType.TIMESTAMP;
 abstract class Auditable
 {
     @CreatedBy
-    protected String creaetedby;
+    protected String createdby;
 
     @CreatedDate
     @Temporal(TIMESTAMP)

@@ -43,9 +43,7 @@ public class UserRolesId
         {
             return true;
         }
-        // boolean temp = (o.getClass( instanceOf class);
-
-        if(o == null || getClass() != o.getClass())
+        if (o == null || getClass() != o.getClass())
         {
             return false;
         }

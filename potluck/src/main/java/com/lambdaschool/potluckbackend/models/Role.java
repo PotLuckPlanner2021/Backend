@@ -32,9 +32,9 @@ public class Role
     {
     }
 
-    public Role(@NotNull String name)
+    public Role(String name)
     {
-        this.name = name;
+        this.name = name.toUpperCase();
     }
 
     public long getRoleid()
@@ -57,4 +57,13 @@ public class Role
         this.name = name;
     }
 
+    public Set<UserRoles> getUsers()
+    {
+        return users;
+    }
+
+    public void setUsers(Set<UserRoles> users)
+    {
+        this.users = users;
+    }
 }

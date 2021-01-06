@@ -34,22 +34,26 @@ public class SeedData
         r2 = rolerepos.save(r2);
 
         // admin
-        ArrayList<UserRoles> organizer = new ArrayList<>();
-        organizer.add(new UserRoles(new User(), r1));
-        User u1 = new User("sometestuser", "password");
+        ArrayList<UserRoles> org = new ArrayList<>();
+        org.add(new UserRoles(new User(), r1));
+        User u1 = new User("sometestuser",
+                        "password",
+                         "testemail1@email.local");
+        u1.getRoles()
+            .add(new UserRoles(u1, r1));
         userrepos.save(u1);
 
         // we need to start a new list of roles for the new admin user. For each user, a new list of roles needs to be created
         // The list of UserRoles though is never the same!
-        organizer = new ArrayList<>();
-        organizer.add(new UserRoles(new User(), r1));
-        User u2 = new User("admin", "password");
+        org = new ArrayList<>();
+        org.add(new UserRoles(new User(), r1));
+        User u2 = new User("admin", "password", "testemail2@email.local");
         userrepos.save(u2);
 
         // users
         ArrayList<UserRoles> guests = new ArrayList<>();
         guests.add(new UserRoles(new User(), r2));
-        User u3 = new User("justuser", "userpass");
+        User u3 = new User("justuser", "userpass", "testemail3@email.local");
         userrepos.save(u3);
     }
 }

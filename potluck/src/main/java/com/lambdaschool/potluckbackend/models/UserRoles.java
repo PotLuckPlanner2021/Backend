@@ -25,7 +25,7 @@ public class UserRoles extends Auditable
     @ManyToOne
     @NotNull
     @JoinColumn(name = "roleid")
-    @JsonIgnoreProperties(value = "roles",
+    @JsonIgnoreProperties(value = "users",
         allowSetters = true)
     private Role role;
 
@@ -34,8 +34,8 @@ public class UserRoles extends Auditable
     }
 
     public UserRoles(
-        @NotNull User user,
-        @NotNull Role role)
+         User user,
+         Role role)
     {
         this.user = user;
         this.role = role;
@@ -68,20 +68,19 @@ public class UserRoles extends Auditable
         {
             return true;
         }
-
-        if(!(o instanceof UserRoles))
+        if (!(o instanceof UserRoles))
         {
             return false;
         }
-
         UserRoles that = (UserRoles) o;
-        return ((user == null) ? 0 : user.getUserid()) == ((that.user == null) ? 0 : that.user.getUserid())
-            && ((role == null) ? 0 : role.getRoleid()) == ((that.role == null) ? 0 : that.role.getRoleid());
+        return ((user == null) ? 0 : user.getUserid()) == ((that.user == null) ? 0 : that.user.getUserid()) &&
+            ((role == null) ? 0 : role.getRoleid()) == ((that.role == null) ? 0 : that.role.getRoleid());
     }
 
     @Override
     public int hashCode()
     {
+        // return Objects.hash(user.getUserid(), role.getRoleid());
         return 37;
     }
 }

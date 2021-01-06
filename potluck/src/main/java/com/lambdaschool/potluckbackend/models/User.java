@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,6 +31,11 @@ public class User extends Auditable
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
+    @Column(nullable = false,
+        unique = true)
+    @Email
+    private String primaryemail;
+
     @OneToMany(mappedBy = "user",
                 cascade = CascadeType.ALL,
                 orphanRemoval = true)
@@ -38,16 +43,26 @@ public class User extends Auditable
                         allowSetters = true)
     private Set<UserRoles> roles = new HashSet<>();
 
+
+    @OneToMany(mappedBy = "user",
+        cascade = CascadeType.ALL,
+        orphanRemoval = true)
+    @JsonIgnoreProperties(value = "user",
+        allowSetters = true)
+    private Set<Potluck> potlucks = new HashSet<>();
+
     public User()
     {
     }
 
     public User(
         @NotNull String username,
-        @NotNull String password)
+        @NotNull String password,
+        @NotNull String primaryemail)
     {
-        this.username = username;
-        this.password = password;
+        setUsername(username);
+        setPassword(password);
+        this.primaryemail = primaryemail;
     }
 
     public long getUserid()
@@ -70,9 +85,28 @@ public class User extends Auditable
         this.username = username;
     }
 
+
+    public String getPrimaryemail()
+    {
+        return primaryemail;
+    }
+
+    public void setPrimaryemail(String primaryemail)
+    {
+        this.primaryemail = primaryemail.toLowerCase();
+    }
+
+
+
     public String getPassword()
     {
         return password;
+    }
+
+    public void setPasswordNoEncrypt(String password)
+    {
+        this.password = password;
+
     }
 
     /**
@@ -80,6 +114,7 @@ public class User extends Auditable
      * security.
      * @param password
      */
+
     public void setPassword(String password)
     {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -94,6 +129,16 @@ public class User extends Auditable
     public void setRoles(Set<UserRoles> roles)
     {
         this.roles = roles;
+    }
+
+    public Set<Potluck> getPotlucks()
+    {
+        return potlucks;
+    }
+
+    public void setPotlucks(Set<Potluck> potlucks)
+    {
+        this.potlucks = potlucks;
     }
 
     /**
@@ -113,4 +158,5 @@ public class User extends Auditable
         }
         return rtnList;
     }
+
 }
