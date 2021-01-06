@@ -4,6 +4,7 @@ package com.lambdaschool.potluckbackend.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "guests")
@@ -13,7 +14,7 @@ public class Guest
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long guestid;
 
-
+    @NotNull
     private String guestname;
 
     @ManyToOne

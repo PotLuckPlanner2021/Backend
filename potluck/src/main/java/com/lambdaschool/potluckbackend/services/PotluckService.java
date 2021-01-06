@@ -12,5 +12,9 @@ public interface PotluckService
 
     List<Potluck> findAll();
 
-    Potluck save(Potluck newpotluck);
+    Potluck save(long userid, Potluck newpotluck);
+
+    Potluck update(long potluckid, Potluck newpotluck);
+
+    void delete(long id);
 }
