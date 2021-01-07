@@ -9,6 +9,11 @@
 /users/users
 ```
 
+**/[GET] endpoint for the current authenticated user /**
+```
+/users/userinfo
+```
+
 **/[POST] - Register endpoint for a new user in the database/**
 ```
 /users/user
