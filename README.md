@@ -86,7 +86,8 @@
   *time: STRING,
   *location: STRING,
   *host: STRING,
-  *theme: STRING
+  *theme: STRING,
+  *imgurl: STRING
   *guests: [
         {
             "guestname": STRING     //REQUIRED KEY/VALUE
@@ -95,7 +96,7 @@
             "guestname": STRING     //REQUIRED KEY/VALUE
         }
         etc...
-    ]
+    ],
   *items: [
         {
             itemname: STRING       //REQUIRED KEY/VALUE
