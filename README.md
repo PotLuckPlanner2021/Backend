@@ -53,7 +53,7 @@
 **IF THE USER IS AUTHENTICATED THEN THIS WILL RETURN AN ACCESS TOKEN, MAKE FURTHER REQUESTS WITH THIS TOKEN**
 
 ---------------------------------------------------------------------------
-## POTLUCKS ENDPOINTS 🥯🍞🥯🥕:
+## POTLUCK ENDPOINTS 🥯🍞🥯🥕:
 
  **/[GET] endpoint for all potlucks  in general in the database /**
 
@@ -61,12 +61,11 @@
 /potlucks/potlucks
 ```
 ------------------------------------------------------
-**COMING SOON**
+
 **[GET] endpoint for getting a single potluck based on the potluck_id in the database **   
-**COMING SOON**
 
 ```
-/potlucks/:potluck_id   
+/potlucks/potlucks/121 
 ```
 --------------------------------------------------------
 
