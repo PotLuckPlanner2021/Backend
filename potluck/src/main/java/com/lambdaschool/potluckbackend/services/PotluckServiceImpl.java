@@ -65,6 +65,7 @@ public class PotluckServiceImpl
         newPotluck.setLocation(potluck.getLocation());
         newPotluck.setTheme(potluck.getTheme());
         newPotluck.setHost(potluck.getHost());
+        newPotluck.setImgurl(potluck.getImgurl());
 
         newPotluck.getGuests()
             .clear();
@@ -120,6 +121,11 @@ public class PotluckServiceImpl
         if(replacePotluck.getHost() != null)
         {
             currentPotluck.setHost(replacePotluck.getHost());
+        }
+
+        if(replacePotluck.getImgurl() != null)
+        {
+            currentPotluck.setImgurl(replacePotluck.getImgurl());
         }
 
         if(replacePotluck.getTheme() != null)
