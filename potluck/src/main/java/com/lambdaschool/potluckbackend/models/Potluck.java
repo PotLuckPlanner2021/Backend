@@ -22,7 +22,8 @@ public class Potluck
   private String date;
   private String time;
   private String location;
-  private String Host;
+  private String imgurl;
+  private String host;
   private String theme;
 
   @OneToMany(mappedBy = "potluck",
@@ -56,13 +57,15 @@ public class Potluck
       String time,
       String location,
       String host,
+      String imgurl,
       String theme)
   {
     this.name = name;
     this.date = date;
     this.time = time;
     this.location = location;
-    Host = host;
+    this.imgurl  = imgurl;
+    this.host = host;
     this.theme = theme;
   }
 
@@ -118,12 +121,12 @@ public class Potluck
 
   public String getHost()
   {
-    return Host;
+    return host;
   }
 
   public void setHost(String host)
   {
-    Host = host;
+    this.host = host;
   }
 
   public String getTheme()
@@ -146,7 +149,15 @@ public class Potluck
     this.guests = guests;
   }
 
+  public String getImgurl()
+  {
+    return imgurl;
+  }
 
+  public void setImgurl(String imgurl)
+  {
+    this.imgurl = imgurl;
+  }
 
   public User getUser()
   {

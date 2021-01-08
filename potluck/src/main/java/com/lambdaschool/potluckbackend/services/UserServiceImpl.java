@@ -1,6 +1,7 @@
 package com.lambdaschool.potluckbackend.services;
 
 import com.lambdaschool.potluckbackend.exceptions.ResourceNotFoundException;
+import com.lambdaschool.potluckbackend.models.Potluck;
 import com.lambdaschool.potluckbackend.models.Role;
 import com.lambdaschool.potluckbackend.models.User;
 import com.lambdaschool.potluckbackend.models.UserRoles;
@@ -25,16 +26,13 @@ public class UserServiceImpl
     @Autowired
     private RoleRepository rolerepos;
 
-    @Override
-    public User findByName(String name)
-    {
-        User user = userrepos.findByUsername(name);
-        if(user == null)
-        {
-            throw new ResourceNotFoundException("User name " + name + " not found!");
 
-        }
-        return user;
+    @Override
+    public User findByUserId(long id)
+        throws ResourceNotFoundException
+    {
+        return userrepos.findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + "Not found!"));
     }
 
     @Override

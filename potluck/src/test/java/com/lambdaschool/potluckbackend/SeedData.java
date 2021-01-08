@@ -1,6 +1,8 @@
 package com.lambdaschool.potluckbackend;
 
-import com.lambdaschool.potluckbackend.models.*;
+import com.lambdaschool.potluckbackend.models.Role;
+import com.lambdaschool.potluckbackend.models.User;
+import com.lambdaschool.potluckbackend.models.UserRoles;
 import com.lambdaschool.potluckbackend.repository.RoleRepository;
 import com.lambdaschool.potluckbackend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +11,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.*;
+import java.util.ArrayList;
 
 @Transactional
 @ConditionalOnProperty(
@@ -43,7 +45,7 @@ public class SeedData
         // admin
         ArrayList<UserRoles> org = new ArrayList<>();
         org.add(new UserRoles(new User(), r1));
-        User u1 = new User("sometestuser",
+        User u1 = new User("testsometestuser",
                         "password",
                          "testemail1@email.local");
         u1.getRoles()
@@ -54,16 +56,13 @@ public class SeedData
         // The list of UserRoles though is never the same!
         org = new ArrayList<>();
         org.add(new UserRoles(new User(), r1));
-        User u2 = new User("admin", "password", "testemail2@email.local");
+        User u2 = new User("testadmin", "password", "testemail2@email.local");
         userrepos.save(u2);
 
         // users
         ArrayList<UserRoles> guests = new ArrayList<>();
         guests.add(new UserRoles(new User(), r2));
-        User u3 = new User("justuser", "userpass", "testemail3@email.local");
+        User u3 = new User("testjustuser", "userpass", "testemail3@email.local");
         userrepos.save(u3);
     }
-
-
-
 }
